@@ -232,11 +232,11 @@ test('PUT order with invalid ID 0 and invalid API key with more than 16 digits |
     id: 0,
   }
   const requestHeaders = {
-    api_key: '1234567891234564567',
+    api_key: '1234567891234564567'
   }
   const response = await request.put('https://backend.tallinn-learning.ee/test-orders/0', {
     data: requestBody,
-    headers: requestHeaders,
+    headers: requestHeaders
   })
   console.log('response status:', response.status())
   console.log('response body:', await response.json())
@@ -247,10 +247,10 @@ test('PUT order with invalid ID 0 and invalid API key with more than 16 digits |
 //DELETE
 test('DELETE order with valid ID 1 and valid API key | 204 No content |', async ({ request, }) => {
   const requestHeaders: { api_key: string } = {
-    api_key: '1234567891234567',
+    api_key: '1234567891234567'
   }
   const response = await request.delete('https://backend.tallinn-learning.ee/test-orders/1', {
-    headers: requestHeaders,
+    headers: requestHeaders
   })
   console.log('response status:', response.status())
   console.log('response body:', await response.text())
@@ -259,10 +259,10 @@ test('DELETE order with valid ID 1 and valid API key | 204 No content |', async 
 
 test('DELETE order with valid ID 2 and invalid API key with more than 16 digits | 401 Unauthorized |', async ({ request, }) => {
   const requestHeaders: { api_key: string } = {
-    api_key: '1234567891234567123',
+    api_key: '1234567891234567123'
   }
   const response = await request.delete('https://backend.tallinn-learning.ee/test-orders/2', {
-    headers: requestHeaders,
+    headers: requestHeaders
   })
   console.log('response status:', response.status())
   console.log('response body:', await response.text())
@@ -271,10 +271,10 @@ test('DELETE order with valid ID 2 and invalid API key with more than 16 digits 
 
 test('DELETE order with valid ID 3 and invalid API key with less than 16 digits | 401 Unauthorized |', async ({ request, }) => {
   const requestHeaders: { api_key: string } = {
-    api_key: '12334567',
+    api_key: '12334567'
   }
   const response = await request.delete('https://backend.tallinn-learning.ee/test-orders/3', {
-    headers: requestHeaders,
+    headers: requestHeaders
   })
   console.log('response status:', response.status())
   console.log('response body:', await response.text())
@@ -283,10 +283,10 @@ test('DELETE order with valid ID 3 and invalid API key with less than 16 digits 
 
 test('DELETE order with valid ID 4 and invalid API key with non-digits symbols | 401 Unauthorized |', async ({ request, }) => {
   const requestHeaders: { api_key: string } = {
-    api_key: '123sgfdrgf7',
+    api_key: '123sgfdrgf7'
   }
   const response = await request.delete('https://backend.tallinn-learning.ee/test-orders/4', {
-    headers: requestHeaders,
+    headers: requestHeaders
   })
   console.log('response status:', response.status())
   console.log('response body:', await response.text())
@@ -303,10 +303,10 @@ test('DELETE order with valid ID 5 and missing API key | 400 Bad request |', asy
 
 test('DELETE order with invalid ID 11 and valid API key | 400 Bad request |', async ({ request, }) => {
   const requestHeaders: { api_key: string } = {
-    api_key: '1234567891234567',
+    api_key: '1234567891234567'
   }
   const response = await request.delete('https://backend.tallinn-learning.ee/test-orders/11', {
-    headers: requestHeaders,
+    headers: requestHeaders
   })
   console.log('response status:', response.status())
   console.log('response body:', await response.text())

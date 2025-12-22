@@ -1,9 +1,9 @@
 | Scenario name | Status |
 |--------------|------------------|
-| GET login with correct username and password | 200 OK |
-| GET login with missing username | 500 Internal Server Error |
-| GET login with missing password | 500 Internal Server Error |
-| GET login with missing username and password | 500 Internal Server Error |
+| GET log in with correct username and password | 200 OK |
+| GET log in with missing username | 500 Internal Server Error |
+| GET log in with missing password | 500 Internal Server Error |
+| GET log in with missing username and password | 500 Internal Server Error |
 | PUT order with valid ID 1 and valid API key | 200 OK |
 | PUT order with valid ID 2 and invalid API key with more than 16 digits | 401 Unauthorized |
 | PUT order with valid ID 3 and invalid API key with less than 16 digits | 401 Unauthorized |

@@ -1,6 +1,7 @@
 import { expect, test } from '@playwright/test'
 
 import { StatusCodes } from 'http-status-codes'
+import { OrderDto } from '../dto/order-dto'
 
 test('get order with correct id should receive code 200', async ({ request }) => {
   // Build and send a GET request to the server
@@ -32,16 +33,22 @@ test('get order with wrong id should receive code 400', async ({ request }) => {
   expect(response.status()).toBe(400)
 })
 
-test('post order with correct data should receive code 201', async ({ request }) => {
+test('post order id 1 with correct data should receive code 201', async ({ request }) => {
   // prepare request body
-  const requestBody = {
-    status: 'OPEN',
-    courierId: 0,
-    customerName: 'string',
-    customerPhone: 'string',
-    comment: 'string',
-    id: 0,
-  }
+  const requestBody = new OrderDto('OPEN', 0, 'John', '5465413', 'comment', 1)
+  // Send a POST request to the server
+  const response = await request.post('https://backend.tallinn-learning.ee/test-orders', {
+    data: requestBody,
+  })
+  // Log the response status and body
+  console.log('response status:', response.status())
+  console.log('response body:', await response.json())
+  expect(response.status()).toBe(StatusCodes.OK)
+})
+
+test('post order id 2 with correct data should receive code 201', async ({ request }) => {
+  // prepare request body
+  const requestBody = new OrderDto('OPEN', 0, 'John', '5465413', 'comment', 2)
   // Send a POST request to the server
   const response = await request.post('https://backend.tallinn-learning.ee/test-orders', {
     data: requestBody,
@@ -59,14 +66,30 @@ test('post order with incorrect data should receive code 400', async ({ request 
     courierId: '0',
     customerName: 'string',
     customerPhone: 'string',
-    comment: 'string'
+    comment: 'string',
   }
-  // Send a POST request to the server
+  // Send a POST request to server
   const response = await request.post('https://backend.tallinn-learning.ee/test-orders', {
     data: requestBody,
   })
   // Log the response status and body
   console.log('response status:', response.status())
   console.log('response body:', await response.text())
+  expect(response.status()).toBe(StatusCodes.BAD_REQUEST)
+})
+
+test('PUT order with invalid ID 0 and invalid API key with more than 16 digits | 400 Bad request |', async ({
+  request,
+}) => {
+  const requestBody = new OrderDto('OPEN', 0, 'John', '5465413', 'comment', 0)
+  const requestHeaders = {
+    api_key: '1234567891234564567',
+  }
+  const response = await request.put('https://backend.tallinn-learning.ee/test-orders/0', {
+    data: requestBody,
+    headers: requestHeaders,
+  })
+  console.log('response status:', response.status())
+  console.log('response body:', await response.json())
   expect(response.status()).toBe(StatusCodes.BAD_REQUEST)
 })

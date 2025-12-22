@@ -35,7 +35,7 @@ test('get order with wrong id should receive code 400', async ({ request }) => {
 
 test('post order id 1 with correct data should receive code 201', async ({ request }) => {
   // prepare request body
-  const requestBody = new OrderDto ('OPEN', 0, 'John', '5465413', 'comment', 1)
+  const requestBody = new OrderDto('OPEN', 0, 'John', '5465413', 'comment', 1)
   // Send a POST request to the server
   const response = await request.post('https://backend.tallinn-learning.ee/test-orders', {
     data: requestBody,
@@ -48,7 +48,7 @@ test('post order id 1 with correct data should receive code 201', async ({ reque
 
 test('post order id 2 with correct data should receive code 201', async ({ request }) => {
   // prepare request body
-  const requestBody = new OrderDto ('OPEN', 0, 'John', '5465413', 'comment', 2)
+  const requestBody = new OrderDto('OPEN', 0, 'John', '5465413', 'comment', 2)
   // Send a POST request to the server
   const response = await request.post('https://backend.tallinn-learning.ee/test-orders', {
     data: requestBody,
@@ -66,7 +66,7 @@ test('post order with incorrect data should receive code 400', async ({ request 
     courierId: '0',
     customerName: 'string',
     customerPhone: 'string',
-    comment: 'string'
+    comment: 'string',
   }
   // Send a POST request to the server
   const response = await request.post('https://backend.tallinn-learning.ee/test-orders', {
@@ -78,9 +78,10 @@ test('post order with incorrect data should receive code 400', async ({ request 
   expect(response.status()).toBe(StatusCodes.BAD_REQUEST)
 })
 
-
-test('PUT order with invalid ID 0 and invalid API key with more than 16 digits | 400 Bad request |', async ({ request, }) => {
-  const requestBody = new OrderDto ('OPEN', 0, 'John', '5465413', 'comment', 0)
+test('PUT order with invalid ID 0 and invalid API key with more than 16 digits | 400 Bad request |', async ({
+  request,
+}) => {
+  const requestBody = new OrderDto('OPEN', 0, 'John', '5465413', 'comment', 0)
   const requestHeaders = {
     api_key: '1234567891234564567',
   }
@@ -92,7 +93,3 @@ test('PUT order with invalid ID 0 and invalid API key with more than 16 digits |
   console.log('response body:', await response.json())
   expect(response.status()).toBe(StatusCodes.BAD_REQUEST)
 })
-
-
-
-

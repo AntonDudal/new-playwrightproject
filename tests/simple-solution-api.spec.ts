@@ -59,6 +59,8 @@ test('post order id 2 with correct data should receive code 201', async ({ reque
   expect(response.status()).toBe(StatusCodes.OK)
 })
 
+
+
 test('post order with incorrect data should receive code 400', async ({ request }) => {
   // prepare request body
   const requestBody = {

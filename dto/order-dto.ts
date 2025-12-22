@@ -21,7 +21,7 @@ export class OrderDto {
     this.comment = comment
     this.id = id
   }
-  // add a method to create a new instance with random data
+  // add a method to create new instance with random data
   static createOrderWithLowPriority(): OrderDto {
     return new OrderDto(
       'OPEN',

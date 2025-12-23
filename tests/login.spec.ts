@@ -11,7 +11,6 @@ test('should return token with correct username and password', async ({ request 
   expect(response.status()).toBe(StatusCodes.OK)
 })
 
-
 test('should not return token with incorrect username and password', async ({ request }) => {
   const requestBody = new LoginDto('antonduda', 'whe7s5qbYbfT2n')
   const response = await request.post('https://backend.tallinn-learning.ee/login/student', {

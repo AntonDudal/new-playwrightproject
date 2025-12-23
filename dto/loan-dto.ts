@@ -44,7 +44,6 @@ export class LoanDto {
     )
   }
 
-
   static createLowRiskRequest(): LoanDto {
     return new LoanDto(
       20000,

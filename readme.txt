@@ -25,7 +25,7 @@
 
 | Homework10 |
 | Risk decision | Risk level |
-|--------------|------------------|
+|--------------|-------------------|
 | POST Negative| Very high risk |
 | POST Positive | Medium risk |
 | POST Positive | Low risk |

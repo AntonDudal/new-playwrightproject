@@ -1,3 +1,4 @@
+| Homework9 |
 | Scenario name | Status |
 |--------------|------------------|
 | GET login with correct username and password | 200 OK |
@@ -20,3 +21,12 @@
 | DELETE order with valid ID 10 and missing API key | 400 Bad request |
 | DELETE order with missing ID and missing API key | 400 Bad request |
 | DELETE order with invalid ID 11 and valid API key | 400 Bad request |
+
+
+| Homework10 |
+| Risk decision | Risk level |
+|--------------|-------------------|
+| POST Negative| Very high risk |
+| POST Positive | Medium risk |
+| POST Positive | Low risk |
+
